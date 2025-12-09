@@ -1,0 +1,138 @@
+print("Welcome! Inserisci il numero del programma a cui vuoi accedere: \n1 - Max di una lista\n2 - Tabelline\n3 - Media di tre numeri\n4 - Stringhe al contrario\n5 - Numero pari/dispari\n6 - Conto vocali in una stringa\n")
+comando_iniziale = input()
+
+
+def tabellina(comando_iniziale):
+    while True:
+        comando = input("Inserisci un numero per la sua tabellina (o 'esci'): ")
+        if comando == "esci":
+            print("Arrivederci")
+            break
+        
+        try:
+            numero = int(comando)
+            print(f"Tabellina del {numero}:")
+            for i in range(1, 11):
+                tabellina = numero * i
+                print(f"{numero} x {i} = {tabellina}")
+        except ValueError:
+            print("Errore: inserisci un numero scemo!")
+
+def media(comando_iniziale):
+    while True:
+        comando = input("Inserisci 3 numeri separati da spazio (o 'esci'): ")
+        
+        if comando.strip().lower() == "esci":
+            print("Arrivederci")
+            break
+        
+        try:
+            x, y, z = map(int, comando.split())
+            media_val = (x + y + z) / 3
+            print(f"Hai inserito: {x}, {y}, {z}")
+            print(f"La media è {media_val}")
+        except ValueError:
+            print("Errore: devi inserire solo numeri interi separati da spazio!")
+
+    
+def invertitorestringa(comando_iniziale):
+    while True:
+        comando = input("Inserisci una stringa da invertire (o 'esci'): ")
+        
+        if comando == "esci":
+            print("Arrivederci")
+            break
+        
+        if comando.isdigit():
+            print("Errore: inserisci una STRINGA, non un numero!")
+            continue
+        
+        invertitore = comando[::-1]
+        print(f"Stringa originale: '{comando}'")
+        print(f"Stringa invertita: '{invertitore}'")
+
+
+def paridispari(comando_iniziale):
+    while True:
+        numero = input("Scegli un numero (o 'esci'): ")
+        
+        if numero == "esci":
+            print("Arrivederci")
+            break
+        
+        if not numero.isdigit():
+            print("Questo non è un numero cojone")
+            continue
+        
+        if int(numero) % 2 == 0:
+            print("Numero pari")
+        else:
+            print("Numero dispari")
+
+
+
+def contatorevocali(comando_iniziale):
+    while True:
+        comando = input("Inserisci una stringa per contarne le vocali (o 'esci'): ")
+        
+        if comando == "esci":
+            print("Arrivederci")
+            break
+        
+        if comando.isdigit():
+            print("Errore: inserisci una STRINGA, non un numero!")
+            continue
+        
+        vocali = "aeiouAEIOU"
+        conteggio = 0
+        
+        print(f"Conteggio vocali della stringa '{comando}'!")
+        for carattere in comando:
+            if carattere in vocali:
+                conteggio += 1
+        print(f"Nella stringa ci sono {conteggio} vocali")
+
+
+def massimo_lista(comando_iniziale):
+    while True:
+        try:
+            testo_iniziale = input("Massimo di una lista di numeri!\nQuanti numeri vuoi inserire? (o 'esci'): ")
+            
+            if testo_iniziale.strip().lower() == "esci":
+                print("Arrivederci")
+                break
+                
+                
+            n_numeri = int(testo_iniziale)
+            if n_numeri == 0:
+                print("Inserisci almeno 1 numero!")
+                continue
+            
+            numeri = []
+            for i in range(n_numeri):
+                num = float(input(f"Inserisci il numero {i+1}: "))
+                numeri.append(num)
+            
+            massimo = max(numeri)
+            print(f"Il numero più alto è: {massimo}")           
+        except ValueError:
+            print("Inserisci dei NUMERI, scemo!")
+            continue
+
+
+
+if comando_iniziale == "1":
+        print(f"{massimo_lista(comando_iniziale)}")
+elif comando_iniziale == "2":
+        print(f"{tabellina(comando_iniziale)}")
+elif comando_iniziale == "3":
+        print(f"{media(comando_iniziale)}")
+elif comando_iniziale == "4":
+        print(f"{invertitorestringa(comando_iniziale)}")
+elif comando_iniziale == "5":
+        print(f"{paridispari(comando_iniziale)}")
+elif comando_iniziale == "6":
+        print(f"{contatorevocali(comando_iniziale)}")
+              
+
+
